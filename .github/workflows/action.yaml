@@ -27,7 +27,20 @@ jobs:
 
       - name: Debug workspace permissions
         run: ls -ld /home/pptruser/gaction
-
+        
+      - name: Switch to pptruser by sudo
+        run: |
+          sudo -i -u pptruser;
+          whoami;
+          node -v;
+          go version;
+          make all && node ../login.js 'https://dev.tidbcloud.com' 'xxx' 'xxx' '../'
+          export GOROOT=/home/pptruser/go
+          export GOPATH=/home/pptruser/gopath
+          export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
+          node -v;
+          go version;
+          
       - name: Switch to pptruser and execute commands
         run: |
           sudo -u pptruser bash -c "whoami && node -v && go version && make all && node ../login.js 'https://dev.tidbcloud.com' 'xxx' 'xxx' '../'"
