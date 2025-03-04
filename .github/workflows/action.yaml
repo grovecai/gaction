@@ -10,6 +10,9 @@ jobs:
       image: grovecai0108/dataflow-e2e-runner
 
     steps:
+      - name: Fix permissions
+        run: sudo chmod -R 777 /__w/_temp/
+        
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
