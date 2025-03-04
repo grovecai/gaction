@@ -11,6 +11,9 @@ jobs:
       options: --user pptruser  # Run as root to ensure permissions
 
     steps:
+      - name: Debug workspace permissions
+        run: ls -ld $GITHUB_WORKSPACE
+        
       - name: Checkout Repository
         uses: actions/checkout@v4
 
