@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Debug workspace permissions
-        run: ls -ld $GITHUB_WORKSPACE
+        run: ls -ld $GITHUB_WORKSPACE && cd /home/pptruser && ls -al
         
       - name: Checkout Repository
         uses: actions/checkout@v4
