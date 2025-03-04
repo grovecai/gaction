@@ -8,19 +8,33 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: grovecai0108/dataflow-e2e-runner
-      options: --user pptruser  # Run as root to ensure permissions
+      options: --user root  # Run as root to ensure permissions
 
     steps:
-      - name: Debug workspace permissions
-        run: ls -ld $GITHUB_WORKSPACE && cd /home/pptruser && ls -al
+      - name: Install required packages
+        run: apt-get update && apt-get install -y sudo
         
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          path: /home/pptruser/gaction
+
+      - name: Change ownership and permissions
+        run: |
+          chown -R pptruser:pptruser /home/pptruser/gaction
+          chmod -R 777 /home/pptruser/gaction
 
       - name: Debug workspace permissions
-        run: ls -ld $GITHUB_WORKSPACE
+        run: ls -ld /home/pptruser/gaction
+
+      - name: Switch to pptruser and execute commands
+        run: |
+          sudo -u pptruser bash -c "whoami && ls -la /home/pptruser/gaction"
 
       - name: Run E2E
         run: |
+          cd /home/pptruser/gaction;
+          node -v;
+          go version;
           make all;
           node ../login.js "https://dev.tidbcloud.com" "xxx" "xxx" "../";
