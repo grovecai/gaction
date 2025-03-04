@@ -1,0 +1,24 @@
+name: Run E2E Test Cases as Root
+
+on:
+  workflow_dispatch:  # This makes it run only when manually triggered
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: grovecai0108/dataflow-e2e-runner:1.0
+      options: --user root  # Run as root to ensure permissions
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run  
+        run: |
+          whoami;
+          node -v;
+          go version;
+          make all;
+          cd /home/pptruser;
+          node login.js "https://dev.tidbcloud.com" "xxx" "xxx" "../";
