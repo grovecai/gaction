@@ -16,11 +16,10 @@ jobs:
         
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          path: /home/pptruser/gaction
 
       - name: Change ownership and permissions
         run: |
+          cp -R $GITHUB_WORKSPACE/gaction /home/pptruser
           chown -R pptruser:pptruser /home/pptruser/gaction
           chmod -R 777 /home/pptruser/gaction
 
