@@ -8,18 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: grovecai0108/dataflow-e2e-runner
+      options: --user root  # Run as root to ensure permissions
 
     steps:
-      - name: Fix permissions
-        run: chmod -R 777 /__w/_temp/
-        
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: false 
+          persist-credentials: false
+
+      - name: Debug workspace permissions
+        run: ls -ld $GITHUB_WORKSPACE
 
       - name: Run E2E
         run: |
-          cd $GITHUB_WORKSPACE;
           make all;
           node ../login.js "https://dev.tidbcloud.com" "xxx" "xxx" "../";
