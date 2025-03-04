@@ -29,7 +29,7 @@ jobs:
         run: ls -ld /home/pptruser/gaction
         
       - name: Switch to pptruser with ENV2
-        run: sudo -u pptruser bash -c "whoami && export GOROOT=/home/pptruser/go && export GOPATH=/home/pptruser/gopath && export PATH=/home/pptruser/go/bin:/home/pptruser/gopath/bin:\$PATH && make all && node ../login.js 'https://dev.tidbcloud.com' 'xxx' 'xxx' '../'"
+        run: sudo -u pptruser bash -c "whoami && export GOROOT=/home/pptruser/go && export GOPATH=/home/pptruser/gopath && export PATH=/home/pptruser/go/bin:/home/pptruser/gopath/bin:\$PATH && env && make all && pwd && node ../login.js 'https://dev.tidbcloud.com' 'xxx' 'xxx' '../'"
 
 
       - name: Switch to pptruser with ENV
