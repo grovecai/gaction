@@ -1,0 +1,22 @@
+name: Run E2E Test Cases
+
+on:
+  workflow_dispatch:  # This makes it run only when manually triggered
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: grovecai0108/dataflow-e2e-runner
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false 
+
+      - name: Run E2E
+        run: |
+          cd $GITHUB_WORKSPACE;
+          make all;
+          node ../login.js "https://dev.tidbcloud.com" "xxx" "xxx" "../";
