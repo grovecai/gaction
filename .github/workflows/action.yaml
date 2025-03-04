@@ -30,7 +30,7 @@ jobs:
 
       - name: Switch to pptruser with ENV
         run: |
-           sudo -u -E pptruser bash -c "whoami && make all && node ../login.js 'https://dev.tidbcloud.com' 'xxx' 'xxx' '../'"
+           sudo -i -u pptruser bash -c "whoami && make all && node ../login.js 'https://dev.tidbcloud.com' 'xxx' 'xxx' '../'"
           
       - name: Switch to pptruser and execute commands
         run: |
