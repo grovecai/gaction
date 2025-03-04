@@ -30,15 +30,7 @@ jobs:
 
       - name: Switch to pptruser and execute commands
         run: |
-          sudo -u pptruser bash -c "whoami && ls -la /home/pptruser/gaction"
-          whoami;
-          cd /home/pptruser;
-          ls -al;
-          cd gaction;
-          node -v;
-          go version;
-          make all;
-          node ../login.js "https://dev.tidbcloud.com" "xxx" "xxx" "../";
+          sudo -u pptruser bash -c "whoami && node -v && go version && make all && node ../login.js 'https://dev.tidbcloud.com' 'xxx' 'xxx' '../'"
 
       - name: Run E2E
         run: |
