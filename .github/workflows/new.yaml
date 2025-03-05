@@ -2,7 +2,39 @@ name: Run E2E Test Cases as Root
 
 on:
   workflow_dispatch:  # This makes it run only when manually triggered
-
+    inputs:
+      env:
+        description: "Cases running environment"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - staging
+          - prod
+      auth_token:
+        description: "Bear token in tidb cloud console"
+        required: true
+        type: string
+      case_group:
+        description: "Select case group to be run"
+        required: false
+        default: "smoke"
+        type: choice
+        options:
+          - smoke
+          - awsSmoke
+          - gcpSmoke
+          - azureSmoke
+          - regression
+          - awsRegression
+          - gcpRegression
+          - azureRegression
+      cases:
+        description: "Run specific cases separated by comma(,). If not empty, only cases specified here will be run, case_group will be ignored"
+        required: false
+        type: string
+      
 jobs:
   build:
     runs-on: ubuntu-latest
