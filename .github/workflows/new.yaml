@@ -50,15 +50,15 @@ on:
         required: false
         type: string
       org_id:
-        description: "Run in specific org instead of default"
+        description: "Org id for specific org instead of default"
         required: false
         type: string
       project_id:
-        description: "Run in specific project instead of default"
+        description: "Project id specific project instead of default"
         required: false
         type: string
       cluster_ids:
-        description: "Reuse the existed clusters(separated by ',')"
+        description: "Cluster ids for reusing existed clusters(separated by ',')"
         required: false
         type: string
       
