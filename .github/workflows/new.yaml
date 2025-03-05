@@ -12,6 +12,24 @@ on:
           - dev
           - staging
           - prod
+      case_group:
+        description: "Select case group to be run"
+        required: false
+        default: "smoke"
+        type: choice
+        options:
+          - smoke
+          - awsSmoke
+          - gcpSmoke
+          - azureSmoke
+          - all
+          - awsAll
+          - gcpAll
+          - azureAll
+      cases:
+        description: "Run specific cases(separated by ',', if not empty cases in case_group will be ignored"
+        required: false
+        type: string
       auth_token:
         description: "Bear token(please copy token here without 'Bear' prefix)."
         required: true
@@ -31,24 +49,7 @@ on:
         required: false
         default: "eastus"
         type: string
-      case_group:
-        description: "Select case group to be run"
-        required: false
-        default: "smoke"
-        type: choice
-        options:
-          - smoke
-          - awsSmoke
-          - gcpSmoke
-          - azureSmoke
-          - all
-          - awsAll
-          - gcpAll
-          - azureAll
-      cases:
-        description: "Run specific cases(separated by ',', if not empty cases in case_group will be ignored"
-        required: false
-        type: string
+
       org_id:
         description: "Org id for specific org instead of default"
         required: false
