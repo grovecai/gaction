@@ -41,10 +41,10 @@ on:
           - awsSmoke
           - gcpSmoke
           - azureSmoke
-          - regression
-          - awsRegression
-          - gcpRegression
-          - azureRegression
+          - all
+          - awsAll
+          - gcpAll
+          - azureAll
       cases:
         description: "Run specific cases(separated by ',', if not empty cases in case_group will be ignored"
         required: false
