@@ -49,7 +49,6 @@ on:
         required: false
         default: "eastus"
         type: string
-
       org_id:
         description: "Org id for specific org instead of default"
         required: false
