@@ -76,6 +76,7 @@ jobs:
       - name: Run  
         run: |
           whoami;
+          env;
           node -v;
           go version;
           make all;
