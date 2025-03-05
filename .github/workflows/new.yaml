@@ -13,7 +13,7 @@ on:
           - staging
           - prod
       auth_token:
-        description: "Bear token in tidb cloud console"
+        description: "Bear token in tidb cloud console, please copy token here without 'Bear' prefix."
         required: true
         type: string
       case_group:
