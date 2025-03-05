@@ -72,12 +72,26 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        
       - name: Export Inputs to Env
         run: |
-          echo "ENV_NAME=${{ inputs.env }}" >> $GITHUB_ENV
-          echo "CASE_GROUP=${{ inputs.case_group }}" >> $GITHUB_ENV
-          echo "CASES=${{ inputs.cases }}" >> $GITHUB_ENV
+          echo "NODE_PATH=/home/pptruser/node_modules" >> $GITHUB_ENV
+          echo "INPUT_ENV_CONFIG_FILE=$GITHUB_WORKSPACE/test/e2e/config.${{ inputs.env }}.yaml" >> $GITHUB_ENV
+          echo "INPUT_CASE_GROUP=${{ inputs.case_group }}" >> $GITHUB_ENV
+          echo "INPUT_AUTH_TOKEN=${{ inputs.auth_token }}" >> $GITHUB_ENV
+          echo "INPUT_CASES=${{ inputs.cases }}" >> $GITHUB_ENV
+          echo "INPUT_AWS_REGIONS=${{ inputs.aws_regions }}" >> $GITHUB_ENV
+          echo "INPUT_GCP_REGIONS=${{ inputs.gcp_regions }}" >> $GITHUB_ENV
+          echo "INPUT_AZURE_REGIONS=${{ inputs.azure_regions }}" >> $GITHUB_ENV
+          echo "INPUT_ORG_ID=${{ inputs.org_id }}" >> $GITHUB_ENV
+          echo "INPUT_PROJECT_ID=${{ inputs.project_id }}" >> $GITHUB_ENV
+          echo "INPUT_CLUSTER_IDS=${{ inputs.cluster_ids }}" >> $GITHUB_ENV
 
+      - name: Prepare env config
+        run: |
+          env;
+          node $GITHUB_WORKSPACE/test/e2e/script/ci_inputs_to_env_config.js;
+        
       - name: Run  
         run: |
           echo "Running in $ENV_NAME with case group $CASE_GROUP";
