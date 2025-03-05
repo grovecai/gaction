@@ -87,6 +87,11 @@ jobs:
           echo "INPUT_PROJECT_ID=${{ inputs.project_id }}" >> $GITHUB_ENV
           echo "INPUT_CLUSTER_IDS=${{ inputs.cluster_ids }}" >> $GITHUB_ENV
 
+      - name: Run E2E
+        run: |
+          cd $GITHUB_WORKSPACE
+          make e2e-test-${{ inputs.env }}
+      
       - name: Prepare env config
         run: |
           env;
