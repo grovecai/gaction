@@ -72,9 +72,15 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: Export Inputs to Env
+        run: |
+          echo "ENV_NAME=${{ inputs.env }}" >> $GITHUB_ENV
+          echo "CASE_GROUP=${{ inputs.case_group }}" >> $GITHUB_ENV
+          echo "CASES=${{ inputs.cases }}" >> $GITHUB_ENV
 
       - name: Run  
         run: |
+          echo "Running in $ENV_NAME with case group $CASE_GROUP";
           whoami;
           env;
           node -v;
