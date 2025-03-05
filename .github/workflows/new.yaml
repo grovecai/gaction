@@ -49,6 +49,18 @@ on:
         description: "Run specific cases(separated by ',', if not empty cases in case_group will be ignored"
         required: false
         type: string
+      org_id:
+        description: "Run in specific org instead of default"
+        required: false
+        type: string
+      project_id:
+        description: "Run in specific project instead of default"
+        required: false
+        type: string
+      cluster_ids:
+        description: "Reuse the existed clusters(separated by ',')"
+        required: false
+        type: string
       
 jobs:
   build:
