@@ -16,6 +16,21 @@ on:
         description: "Bear token in tidb cloud console, please copy token here without 'Bear' prefix."
         required: true
         type: string
+      aws_regions:
+        description: "If the cases you runing contain aws cases, please input aws regions you want to run here. Most of cases only need one region, some need two regions."
+        required: false
+        default: "us-west-2,us-west-1"
+        type: string
+      gcp_regions:
+        description: "If the cases you runing contain gcp cases, please input gcp regions you want to run here. Most of cases only need one region, some need two regions."
+        required: false
+        default: "us-west1,us-west2"
+        type: string
+      azure_regions:
+        description: "If the cases you runing contain azure cases, please input azure regions you want to run here. Most of cases only need one region, some need two regions."
+        required: false
+        default: "eastus"
+        type: string
       case_group:
         description: "Select case group to be run"
         required: false
