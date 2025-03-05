@@ -4,7 +4,7 @@ on:
   workflow_dispatch:  # This makes it run only when manually triggered
     inputs:
       env:
-        description: "Cases running environment"
+        description: "Cases environment"
         required: true
         default: "dev"
         type: choice
@@ -13,21 +13,21 @@ on:
           - staging
           - prod
       auth_token:
-        description: "Bear token in tidb cloud console, please copy token here without 'Bear' prefix."
+        description: "Bear token(please copy token here without 'Bear' prefix)."
         required: true
         type: string
       aws_regions:
-        description: "If the cases you runing contain aws cases, please input aws regions you want to run here. Most of cases only need one region, some need two regions."
+        description: "AWS regions for aws cases to run. Most cases only need one, some need two."
         required: false
         default: "us-west-2,us-west-1"
         type: string
       gcp_regions:
-        description: "If the cases you runing contain gcp cases, please input gcp regions you want to run here. Most of cases only need one region, some need two regions."
+        description: "GCP regions for gcp cases to run. Most cases only need one, some need two."
         required: false
         default: "us-west1,us-west2"
         type: string
       azure_regions:
-        description: "If the cases you runing contain azure cases, please input azure regions you want to run here. Most of cases only need one region, some need two regions."
+        description: "Azure regions for azure cases to run. Most cases only need one, some need two."
         required: false
         default: "eastus"
         type: string
@@ -46,7 +46,7 @@ on:
           - gcpRegression
           - azureRegression
       cases:
-        description: "Run specific cases separated by comma(,). If not empty, only cases specified here will be run, case_group will be ignored"
+        description: "Run specific cases(separated by ',', if not empty cases in case_group will be ignored"
         required: false
         type: string
       
